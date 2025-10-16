@@ -20,7 +20,7 @@ El proyecto consiste en un **sistema de gestión de tareas** con funcionalidades
 git clone https://github.com/jrimbaquingaguana/Prueba_Tecnica_Back_Symfony.git
 cd Prueba_Tecnica_Back_Symfony
 ```
-### 1. Clonar el repositorio
+### 2. Configurar la base de datos
 Editar el archivo .env y actualizar la URL de conexión a MySQL:
 ```bash
 DATABASE_URL="mysql://root:040500@127.0.0.1:3306/tasks_test?serverVersion=8.0"
