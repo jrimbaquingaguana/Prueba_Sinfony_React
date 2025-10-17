@@ -3,7 +3,7 @@
 📞 Teléfono: 0999819224  
 
 ## 📌 Descripción
-Este repositorio contiene el desarrollo de una **prueba técnica** realizada por **Jose Imbaquinga**, enfocada en demostrar habilidades en **desarrollo fullstack** con **Symfony (PHP)** y **React**.  
+Este repositorio contiene el desarrollo de una **prueba técnica** realizado por **Jose Imbaquinga**, enfocada en demostrar habilidades en **desarrollo fullstack** con **Symfony (PHP)** y **React**.  
 
 El proyecto consiste en un **sistema de gestión de tareas** con funcionalidades como:
 
