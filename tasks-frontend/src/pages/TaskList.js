@@ -44,7 +44,7 @@ export default function TaskList({ refresh }) {
   return (
     <div
       style={{
-        maxWidth: "800px",
+        maxWidth: "900px",
         margin: "40px auto",
         padding: "20px",
         border: "2px solid #e5e7eb",
@@ -61,6 +61,7 @@ export default function TaskList({ refresh }) {
             </th>
             <th style={{ padding: "12px", borderBottom: "2px solid #e5e7eb" }}>Descripción</th>
             <th style={{ padding: "12px", borderBottom: "2px solid #e5e7eb" }}>Estado</th>
+            <th style={{ padding: "12px", borderBottom: "2px solid #e5e7eb" }}>Creado</th>
             <th style={{ padding: "12px", borderBottom: "2px solid #e5e7eb" }}>Acciones</th>
           </tr>
         </thead>
@@ -81,6 +82,9 @@ export default function TaskList({ refresh }) {
                 >
                   {task.status}
                 </span>
+              </td>
+              <td style={{ padding: "12px" }}>
+                {new Date(task.created_at).toLocaleString()}
               </td>
               <td style={{ padding: "12px", display: "flex", gap: "10px" }}>
                 <button

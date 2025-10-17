@@ -3,10 +3,15 @@ import { useState } from "react";
 export default function TaskForm({ onTaskCreated, onClose }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title.trim()) return;
+
+    if (!title.trim()) {
+      setError("El título es obligatorio");
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:8000/api/tasks", {
@@ -14,13 +19,22 @@ export default function TaskForm({ onTaskCreated, onClose }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, description }),
       });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        setError(errData.error || "Error al crear tarea");
+        return;
+      }
+
       const newTask = await response.json();
       onTaskCreated(newTask); // recarga lista automáticamente
       setTitle("");
       setDescription("");
+      setError("");
       onClose(); // cierra el formulario
-    } catch (error) {
-      console.error("Error al crear tarea", error);
+    } catch (err) {
+      console.error("Error al crear tarea", err);
+      setError("Error de conexión con el servidor");
     }
   };
 
@@ -40,6 +54,17 @@ export default function TaskForm({ onTaskCreated, onClose }) {
         margin: "0 auto",
       }}
     >
+      {error && (
+        <div
+          style={{
+            color: "#b91c1c",
+            fontWeight: "bold",
+            marginBottom: "10px",
+          }}
+        >
+          {error}
+        </div>
+      )}
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
